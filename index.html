@@ -885,6 +885,34 @@
     font-weight: 400;
   }
 
+  .review-gif-wrap {
+    position: relative;
+    max-width: 380px;
+    margin: 32px auto 24px;
+  }
+  @media (max-width: 600px) {
+    .review-gif-wrap {
+      max-width: 260px;
+      margin: 24px auto 16px;
+    }
+  }
+  .review-gif {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+  }
+  .review-tape {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: auto;
+    z-index: 2;
+    pointer-events: none;
+  }
+
   /* ── PROOF ── */
   .proof { background: var(--peach); border-top: 2px solid var(--black); border-bottom: 2px solid var(--black); }
   .proof-grid {
@@ -2503,6 +2531,9 @@
       <span class="badge" style="background:#fff;">REAL REVIEWS</span>
       <h2 class="section-title">먼저 들은 사람들의<br>진짜 후기</h2>
       <p class="section-desc">실제 수강생이 남긴 후기입니다.</p>
+      <div class="review-gif-wrap">
+        <img src="review.gif" alt="수강생 후기" class="review-gif">
+      </div>
     </div>
 
     <div class="proof-grid">
