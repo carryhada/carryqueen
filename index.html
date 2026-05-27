@@ -1547,7 +1547,7 @@
     padding: 8px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.10);
     align-self: flex-start;
-    margin-top: -8px;
+    margin-top: -20px;
   }
   .sol-card-box h3 {
     font-size: clamp(20px, 2.8vw, 32px);
@@ -1562,6 +1562,7 @@
     font-weight: 400;
     color: #444;
     line-height: 1.7;
+    letter-spacing: -0.03em;
   }
 
   .no-grid {
@@ -1582,6 +1583,17 @@
     text-align: center;
     position: relative;
     overflow: hidden;
+  }
+  @media (max-width: 600px) {
+    .no-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+    .no-grid-item {
+      font-size: 13px;
+      padding: 8px 6px;
+      letter-spacing: -0.03em;
+    }
   }
   .no-grid-item::after {
     content: '';
@@ -1911,7 +1923,7 @@
           <div class="sol-card-body">
             <h3>저희는 그냥<br>연결만 하면 됩니다</h3>
             <div class="no-grid" style="margin-top:16px;">
-              <div class="no-grid-item">상품 직접 판매</div>
+              <div class="no-grid-item">상품판매</div>
               <div class="no-grid-item">재고 사입</div>
               <div class="no-grid-item">배송</div>
               <div class="no-grid-item">CS 문의</div>
