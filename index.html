@@ -689,7 +689,8 @@
     margin-top: 14px;
   }
   .curri-card li {
-    font-size: 14px;
+    font-size: 15px;
+    line-height: 1.25;
     padding: 4px 0 4px 22px;
     position: relative;
     color: #222;
@@ -994,9 +995,16 @@
   }
   @media (max-width: 600px) {
     .bonus h2 {
-      font-size: clamp(26px, 7vw, 40px);
+      font-size: clamp(22px, 6vw, 36px);
       letter-spacing: -0.05em;
       text-align: left;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .bonus-h2-icon {
+      width: 100px;
+      height: 100px;
     }
     .bonus-box {
       margin: 0 -24px;
@@ -1371,23 +1379,30 @@
   .story-pain.ai-copy-section {
     background: #2b2b2b;
     position: relative;
-    padding-bottom: 70px;
+    z-index: 1;
+    padding-bottom: 28px;
   }
-  .story-pain.ai-copy-section::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
-    border-top: 50px solid #2b2b2b;
-    z-index: 2;
+  .ai-arrow {
+    width: 100%;
+    height: 130px;
+    background: #2b2b2b;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    margin-bottom: 0;
   }
   .ai-copy-section .hero-gif {
-    margin-bottom: 60px;
+    margin-bottom: 32px;
+  }
+  .ai-copy-section .hero-gif + .pain-title {
+    margin-top: 56px;
+  }
+  .ai-fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .65s ease, transform .65s ease;
+  }
+  .ai-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   /* ── STORY ── */
@@ -2128,14 +2143,17 @@
 <!-- ── AI COPY ── -->
 <div class="story-pain ai-copy-section">
   <div class="story-inner">
-    <p class="pain-label"><span class="money-icon">✏️</span> 글쓰기 1도 몰라도...</p>
-    <h2 class="pain-title">
+    <p class="pain-label ai-fade"><span class="money-icon">✏️</span> 글쓰기 1도 몰라도...</p>
+    <h2 class="pain-title ai-fade">
       키워드+링크만 입력하면<br>
       <span class="pain-red">1분만에 수익글이 완성</span>
     </h2>
-    <img src="ai-copy.gif" class="hero-gif" alt="AI 수익글 자동완성">
+    <img src="ai-copy.gif" class="hero-gif ai-fade" alt="AI 수익글 자동완성">
+    <h2 class="pain-title ai-fade">'복사+붙여넣기' 만으로<br><span class="pain-red">수익화 가능</span></h2>
   </div>
 </div>
+
+<div class="ai-arrow"></div>
 
 <!-- ── 5. CURRICULUM ── -->
 <section class="section curri" id="curri">
@@ -2155,7 +2173,7 @@
         <p>네이버가 만든 새 판. 어떻게 작동하고 어디서 돈이 발생하는지 5분 안에 이해됩니다.</p>
         <ul>
           <li>플랫폼 수익 구조</li>
-          <li>경쟁사 대비 우위 포인트</li>
+          <li>경쟁사 대비 높은 수수료율</li>
         </ul>
       </div>
 
@@ -2678,6 +2696,23 @@
       });
     }, { threshold: 0.15 });
     revealObs.observe(solReveal);
+  }
+
+  // ✏️ AI COPY 섹션 스크롤 애니메이션
+  const aiSection = document.querySelector('.ai-copy-section');
+  if (aiSection) {
+    const aiObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const items = entry.target.querySelectorAll('.ai-fade');
+          items.forEach((el, i) => {
+            setTimeout(() => el.classList.add('visible'), i * 180);
+          });
+          aiObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    aiObs.observe(aiSection);
   }
 
   // 💬 채팅 말풍선 스크롤 애니메이션
