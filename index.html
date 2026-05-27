@@ -980,6 +980,17 @@
     line-height: 1.25;
     letter-spacing: -0.03em;
     margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .bonus-h2-icon {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    flex-shrink: 0;
   }
   @media (max-width: 600px) {
     .bonus h2 {
@@ -2299,7 +2310,7 @@
   <div class="container">
     <div class="bonus-box">
       <div class="bonus-tag">🎁 신청자 한정 특전</div>
-      <h2>무료특강 참여자에게<br>이 모든 것이 제공됩니다.</h2>
+      <h2>무료특강 참여자에게<br>이 모든 것이 제공됩니다.<img src="icon-gift.png" class="bonus-h2-icon" alt=""></h2>
 
       <div class="bonus-grid">
         <div class="bonus-card c-yellow bg-01">
