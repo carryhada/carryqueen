@@ -1167,7 +1167,6 @@
     top: -40px; left: -40px;
     width: 160px; height: 160px;
     background: var(--peach);
-    border: 2px solid var(--black);
     border-radius: 50%;
     opacity: 0.6;
   }
@@ -1177,7 +1176,6 @@
     bottom: -50px; right: -50px;
     width: 200px; height: 200px;
     background: var(--mint);
-    border: 2px solid var(--black);
     border-radius: 50%;
     opacity: 0.6;
   }
@@ -1187,17 +1185,33 @@
     max-width: 900px;
     margin: 0 auto;
   }
+  .countdown-date {
+    font-size: 0.65em;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.04em;
+  }
   .countdown .badge {
     background: var(--black);
     color: var(--yellow);
     border-color: var(--black);
   }
+  .clock-icon {
+    display: inline-block;
+    animation: clockTick 2.4s ease-in-out infinite;
+    transform-origin: center;
+  }
+  @keyframes clockTick {
+    0%   { transform: rotate(-18deg); }
+    50%  { transform: rotate(18deg); }
+    100% { transform: rotate(-18deg); }
+  }
   .countdown h2 {
     font-size: clamp(28px, 4.5vw, 44px);
     font-weight: 900;
-    line-height: 1.2;
+    line-height: 1.0;
     letter-spacing: -0.03em;
-    margin: 20px 0 14px;
+    margin: 20px 0 45px;
   }
   .countdown p.sub {
     font-size: 16px;
@@ -1210,31 +1224,68 @@
     justify-content: center;
     gap: 14px;
     flex-wrap: wrap;
+    margin-top: 64px;
     margin-bottom: 36px;
   }
   .timer-box {
-    background: var(--black);
-    border: 3px solid var(--black);
-    border-radius: 14px;
-    box-shadow: var(--shadow);
-    min-width: 110px;
-    padding: 22px 14px 16px;
-    color: var(--yellow);
+    text-align: center;
   }
-  .timer-box .num {
-    font-size: clamp(36px, 6vw, 56px);
+  .flip-card {
+    position: relative;
+    width: 120px;
+    height: 140px;
+    perspective: 500px;
+    display: inline-block;
+  }
+  .fc-face {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(52px, 7vw, 76px);
     font-weight: 900;
-    line-height: 1;
+    color: #f0f0f0;
     letter-spacing: -0.04em;
     font-variant-numeric: tabular-nums;
-    font-feature-settings: 'tnum';
+    line-height: 1;
+    border-radius: 18px;
+    user-select: none;
+    background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 45%, #1e1e1e 55%, #151515 100%);
+    box-shadow:
+      0 16px 40px rgba(0,0,0,0.7),
+      0 4px 10px rgba(0,0,0,0.5),
+      inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+  .fc-face::after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 1px);
+    left: 0; width: 100%; height: 2px;
+    background: #0a0a0a;
+    box-shadow: 0 1px 2px rgba(255,255,255,0.04);
+  }
+  .flip-card.flip-out .fc-face {
+    animation: fcFlipOut 0.2s ease-in forwards;
+  }
+  .flip-card.flip-in .fc-face {
+    animation: fcFlipIn 0.2s ease-out forwards;
+  }
+  @keyframes fcFlipOut {
+    from { transform: rotateY(0deg) scaleX(1); }
+    to   { transform: rotateY(-90deg) scaleX(0.8); }
+  }
+  @keyframes fcFlipIn {
+    from { transform: rotateY(90deg) scaleX(0.8); }
+    to   { transform: rotateY(0deg) scaleX(1); }
   }
   .timer-box .label {
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.15em;
-    color: #C8C8C8;
-    margin-top: 10px;
+    color: var(--black);
+    margin-top: 14px;
     text-transform: uppercase;
   }
   .countdown-meta {
@@ -1256,9 +1307,28 @@
   .countdown .btn {
     background: var(--black);
     color: var(--yellow);
+    padding: 13px 36px;
+    font-size: 18px;
   }
   @media (max-width: 540px) {
-    .timer-box { min-width: calc(50% - 7px); }
+    .countdown-timer {
+      gap: 6px;
+      flex-wrap: nowrap;
+    }
+    .flip-card {
+      width: clamp(60px, 19vw, 80px);
+      height: clamp(72px, 23vw, 96px);
+      perspective: 400px;
+    }
+    .fc-face {
+      font-size: clamp(26px, 7.5vw, 42px);
+      border-radius: 10px;
+    }
+    .timer-box .label {
+      font-size: 10px;
+      margin-top: 8px;
+      letter-spacing: 0.06em;
+    }
   }
 
   /* ── FAQ ── */
@@ -1861,7 +1931,7 @@
       <a href="#proof">후기</a>
       <a href="#faq">FAQ</a>
     </div>
-    <a class="nav-cta" href="#apply">무료 신청 →</a>
+    <a class="nav-cta" href="https://forms.gle/6g8WjUrVSd64rNFV7" target="_blank">무료 신청 →</a>
   </div>
 </nav>
 
@@ -1888,7 +1958,7 @@
         <img src="hero.gif" alt="hero gif" class="hero-gif">
         <span class="closing-line1">✦ 첫 수익 만드는 가장 빠른 길</span>
         <span class="closing-line2">한달 <mark class="closing-mark">최소 100만원</mark> 이상 벌어가는 방법</span>
-        <a class="btn" href="#apply">무료특강 신청하기 →</a>
+        <a class="btn" href="https://forms.gle/6g8WjUrVSd64rNFV7" target="_blank">무료특강 신청하기 →</a>
       </div>
     </div>
     <div class="hero-meta">
@@ -2423,22 +2493,41 @@
 <!-- ── 10. COUNTDOWN ── -->
 <section class="countdown" id="countdown">
   <div class="countdown-inner">
-    <span class="badge">⏰ LIMITED TIME</span>
-    <h2>무료특강 모집 마감까지</h2>
-    <p class="sub">선착순 100명 한정. 마감 이후 다음 기수까지 3개월 대기.</p>
+    <span class="badge"><span class="clock-icon">⏰</span> LIMITED TIME</span>
+    <h2>무료특강 일정<br><span class="countdown-date">2026년 06월 05일 (금) 저녁 20:00</span></h2>
 
     <div class="countdown-timer" id="timer">
-      <div class="timer-box"><div class="num" id="d-days">00</div><div class="label">Days</div></div>
-      <div class="timer-box"><div class="num" id="d-hours">00</div><div class="label">Hours</div></div>
-      <div class="timer-box"><div class="num" id="d-mins">00</div><div class="label">Minutes</div></div>
-      <div class="timer-box"><div class="num" id="d-secs">00</div><div class="label">Seconds</div></div>
+      <div class="timer-box">
+        <div class="flip-card" id="fc-days">
+          <div class="fc-face">00</div>
+        </div>
+        <div class="label">Days</div>
+      </div>
+      <div class="timer-box">
+        <div class="flip-card" id="fc-hours">
+          <div class="fc-face">00</div>
+        </div>
+        <div class="label">Hours</div>
+      </div>
+      <div class="timer-box">
+        <div class="flip-card" id="fc-mins">
+          <div class="fc-face">00</div>
+        </div>
+        <div class="label">Minutes</div>
+      </div>
+      <div class="timer-box">
+        <div class="flip-card" id="fc-secs">
+          <div class="fc-face">00</div>
+        </div>
+        <div class="label">Seconds</div>
+      </div>
     </div>
 
     <div class="countdown-meta">
       🔥 잔여 <span class="seats" id="seats-left">23</span>석 / 총 100석
     </div>
     <div>
-      <a class="btn" href="#apply">지금 자리 잡기 →</a>
+      <a class="btn" href="https://forms.gle/6g8WjUrVSd64rNFV7" target="_blank">무료특강 신청하기 →</a>
     </div>
   </div>
 </section>
@@ -2492,7 +2581,7 @@
     <p class="lead">2026년 1기 무료특강 · 선착순 100명 한정</p>
     <div class="deadline" id="final-deadline">⏰ 모집 마감까지 D-3 · 잔여 23석</div>
     <div>
-      <a class="btn" href="#" onclick="alert('신청 폼 연결 예정'); return false;">
+      <a class="btn" href="https://forms.gle/6g8WjUrVSd64rNFV7" target="_blank">
         지금 무료로 신청하기 →
       </a>
     </div>
@@ -2514,11 +2603,36 @@
 <script>
   // ⏰ 무료특강 마감 일시 설정 (여기만 수정하시면 됩니다)
   // 형식: 'YYYY-MM-DDTHH:mm:ss' (한국 시간 기준)
-  const DEADLINE = '2026-06-15T23:59:59+09:00';
+  const DEADLINE = '2026-06-05T23:59:59+09:00';
   const SEATS_LEFT = 23; // 잔여 좌석
 
   const $ = (id) => document.getElementById(id);
   const pad = (n) => String(Math.max(0, n)).padStart(2, '0');
+
+  // 플립 애니메이션 (rotateY 사이드 플립)
+  function flipTo(cardId, newVal) {
+    const card = $(cardId);
+    if (!card) return;
+    const face = card.querySelector('.fc-face');
+    if (!face) return;
+    if (face.textContent === newVal) return;
+
+    // flip-out: 현재 숫자가 옆으로 사라짐
+    card.classList.remove('flip-in', 'flip-out');
+    void card.offsetWidth;
+    card.classList.add('flip-out');
+
+    setTimeout(() => {
+      face.textContent = newVal;
+      card.classList.remove('flip-out');
+      void card.offsetWidth;
+      // flip-in: 새 숫자가 옆에서 나타남
+      card.classList.add('flip-in');
+      setTimeout(() => {
+        card.classList.remove('flip-in');
+      }, 200);
+    }, 200);
+  }
 
   function tick() {
     const now = new Date();
@@ -2526,7 +2640,11 @@
     const diff = end - now;
 
     if (diff <= 0) {
-      ['d-days','d-hours','d-mins','d-secs'].forEach(id => { if($(id)) $(id).textContent = '00'; });
+      ['fc-days','fc-hours','fc-mins','fc-secs'].forEach(id => {
+        const c = $(id); if (!c) return;
+        const f = c.querySelector('.fc-face');
+        if (f) f.textContent = '00';
+      });
       if ($('final-deadline')) $('final-deadline').textContent = '⏰ 모집이 마감되었습니다';
       return;
     }
@@ -2536,10 +2654,10 @@
     const mins  = Math.floor((diff / (1000 * 60)) % 60);
     const secs  = Math.floor((diff / 1000) % 60);
 
-    if ($('d-days'))  $('d-days').textContent  = pad(days);
-    if ($('d-hours')) $('d-hours').textContent = pad(hours);
-    if ($('d-mins'))  $('d-mins').textContent  = pad(mins);
-    if ($('d-secs'))  $('d-secs').textContent  = pad(secs);
+    flipTo('fc-days',  pad(days));
+    flipTo('fc-hours', pad(hours));
+    flipTo('fc-mins',  pad(mins));
+    flipTo('fc-secs',  pad(secs));
 
     if ($('final-deadline')) {
       $('final-deadline').textContent = `⏰ 모집 마감까지 D-${days} · 잔여 ${SEATS_LEFT}석`;
