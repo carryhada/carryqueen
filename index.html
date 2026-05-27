@@ -64,12 +64,12 @@
     gap: 24px;
   }
   .logo {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 900;
     letter-spacing: -0.02em;
   }
   .logo .dot {
-    display: inline-block;
+    display: none;
     width: 10px; height: 10px;
     background: var(--yellow);
     border: 2px solid var(--black);
@@ -91,15 +91,16 @@
     background: var(--yellow);
     color: var(--black);
     border: 2px solid var(--black);
-    padding: 10px 20px;
+    padding: 7px 18px;
     font-weight: 800;
-    font-size: 14px;
+    font-size: 13px;
     text-decoration: none;
-    border-radius: 6px;
-    box-shadow: var(--shadow-sm);
+    border-radius: 999px;
+    box-shadow: 2px 2px 0 #0A0A0A;
     transition: transform .15s, box-shadow .15s;
+    white-space: nowrap;
   }
-  .nav-cta:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 #0A0A0A; }
+  .nav-cta:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 #0A0A0A; }
   @media (min-width: 900px) { .nav-menu { display: flex; } }
 
   /* ── COMMON ── */
@@ -107,12 +108,12 @@
     display: inline-block;
     background: var(--peach);
     color: var(--black);
-    border: 2px solid var(--black);
+    border: 1.5px solid var(--black);
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 0.12em;
-    padding: 6px 14px;
-    border-radius: 4px;
+    padding: 6px 16px;
+    border-radius: 999px;
     box-shadow: var(--shadow-sm);
     text-transform: uppercase;
   }
@@ -183,10 +184,20 @@
     top: 10%; right: -80px;
     width: 240px; height: 240px;
     background: var(--yellow);
-    border: 2px solid var(--black);
+    border: none;
     border-radius: 50%;
     z-index: 0;
-    opacity: 0.6;
+    opacity: 0.8;
+  }
+  .hero-deco-circle {
+    position: absolute;
+    bottom: 14%; left: 80px;
+    width: 60px; height: 60px;
+    background: #FFBF9E;
+    border: none;
+    border-radius: 50%;
+    z-index: 0;
+    opacity: 0.85;
   }
   .hero::after {
     content: '';
@@ -194,7 +205,7 @@
     bottom: 8%; left: -60px;
     width: 180px; height: 180px;
     background: var(--peach);
-    border: 2px solid var(--black);
+    border: none;
     border-radius: 50%;
     z-index: 0;
     opacity: 0.5;
@@ -234,16 +245,16 @@
     font-weight: 900;
     line-height: 1.1;
     letter-spacing: -0.04em;
-    margin-bottom: 24px;
+    margin-bottom: 44px;
   }
   .hero-title .block {
     display: inline-block;
     background: var(--yellow);
-    border: 3px solid var(--black);
+    border: 1.5px solid var(--black);
     padding: 4px 16px;
     border-radius: 8px;
     box-shadow: var(--shadow-sm);
-    transform: rotate(-1.5deg);
+    transform: rotate(-3deg);
     margin: 6px 4px;
   }
   .hero-sub {
@@ -255,11 +266,11 @@
   }
   .hero-sub strong { color: var(--black); font-weight: 700; }
   .hero-subtitle {
-    font-size: clamp(16px, 2.2vw, 21px);
-    font-weight: 800;
-    color: var(--black);
-    margin: 0 auto 44px;
-    letter-spacing: -0.01em;
+    font-size: clamp(24px, 3.5vw, 45px);
+    font-weight: 600;
+    color: #444;
+    margin: 12px auto 16px;
+    letter-spacing: -0.04em;
   }
   .hero-target-list {
     list-style: none;
@@ -271,9 +282,9 @@
     font-size: 18px;
     font-weight: 600;
     color: var(--grey);
-    padding: 5px 0 5px 24px;
+    padding: 2px 0 2px 24px;
     position: relative;
-    line-height: 1.6;
+    line-height: 1.5;
   }
   .hero-target-list li::before {
     content: '✓';
@@ -287,28 +298,50 @@
     to   { opacity: 1; transform: translateY(0); }
   }
   .hero-alert    { animation: fadeInUp .6s ease both; }
-  .hero-title    { animation: fadeInUp .65s .12s ease both; }
-  .hero-subtitle { animation: fadeInUp .6s .28s ease both; }
+  .hero-subtitle { animation: fadeInUp .6s .12s ease both; }
+  .hero-title    { animation: fadeInUp .65s .26s ease both; }
   .hero-sub      { animation: fadeInUp .6s .44s ease both; }
 
   .hero-closing {
-    margin-top: 44px;
+    margin-top: 28px;
     text-align: center;
+  }
+  .hero-gif {
+    width: 620px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 36px;
+    border-radius: 20px;
+    border: 1.5px solid var(--black);
+    box-shadow: var(--shadow);
   }
   .hero-closing .closing-line1 {
     display: block;
-    font-size: clamp(20px, 2.6vw, 26px);
+    font-size: clamp(24px, 3.2vw, 40px);
     font-weight: 900;
     color: var(--black);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
+    margin-top: 60px;
     margin-bottom: 8px;
   }
   .hero-closing .closing-line2 {
     display: block;
-    font-size: clamp(16px, 2vw, 20px);
+    font-size: clamp(22px, 2.8vw, 30px);
     font-weight: 700;
     color: var(--grey);
+    letter-spacing: -0.04em;
     margin-bottom: 28px;
+  }
+  .hero-closing .btn {
+    padding: 13px 28px;
+    font-size: 16px;
+    border-radius: 999px;
+    border-width: 1.5px;
+    box-shadow: 2px 2px 0 #0A0A0A;
+  }
+  .hero-closing .btn:hover {
+    box-shadow: 4px 4px 0 #0A0A0A;
   }
   .closing-mark {
     background: linear-gradient(180deg, transparent 50%, var(--yellow) 50%);
@@ -358,7 +391,7 @@
     justify-content: center;
     gap: 24px;
     flex-wrap: wrap;
-    font-size: 13px;
+    font-size: 17px;
     color: var(--grey);
     font-weight: 600;
   }
@@ -366,6 +399,18 @@
     content: '✓ ';
     color: var(--black);
     font-weight: 900;
+  }
+  @media (max-width: 600px) {
+    .hero-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 17px;
+    }
+    .hero-gif {
+      width: 380px;
+    }
   }
 
   /* ── TICKER ── */
@@ -381,7 +426,7 @@
     display: flex;
     gap: 60px;
     white-space: nowrap;
-    animation: scroll 30s linear infinite;
+    animation: scroll 13s linear infinite;
     font-weight: 800;
     font-size: 18px;
     letter-spacing: -0.01em;
@@ -403,7 +448,7 @@
     margin: 0 auto;
   }
   .case-card {
-    border: 2.5px solid var(--black);
+    border: 1.5px solid var(--black);
     border-radius: 16px;
     box-shadow: var(--shadow);
     overflow: hidden;
@@ -480,7 +525,7 @@
   }
   .problem-card {
     background: #fff;
-    border: 2.5px solid var(--black);
+    border: 1.5px solid var(--black);
     border-radius: 12px;
     padding: 32px 28px;
     box-shadow: var(--shadow);
@@ -883,7 +928,7 @@
   .bonus { background: var(--cream); }
   .bonus-box {
     background: var(--yellow);
-    border: 3px solid var(--black);
+    border: 1.5px solid var(--black);
     border-radius: 20px;
     box-shadow: var(--shadow-lg);
     max-width: 980px;
@@ -1643,32 +1688,34 @@
 
 <!-- ── 1. HERO ── -->
 <section class="hero">
+  <div class="hero-deco-circle"></div>
   <div class="hero-inner">
     <div class="hero-alert"><span class="pulse"></span>2026년 1기 무료특강 · 한정 모집중</div>
+    <p class="hero-subtitle">하루 1시간, 월급에서 벗어나는 방법</p>
     <h1 class="hero-title">
       월1000만원 캐리퀸의<br>
       <span class="block">쇼핑커넥트 수익화</span><br>
       <span class="hl-yellow">시크릿 노하우</span>
     </h1>
-    <p class="hero-subtitle">하루 1시간, 월급에서 벗어나는 방법</p>
     <div class="hero-sub">
       <ul class="hero-target-list">
-        <li>터무니 없는 비싼 강의료 내고 수익 못내신 분들</li>
+        <li>비싼 강의료 내고 수익 못내신 분들</li>
         <li>타자 치기도 힘든 컴맹이신 분들</li>
         <li>AI 못하시는 분들</li>
-        <li>육아하느라 지쳐 시간을 꾸준히 내기 힘드신 분들</li>
+        <li>틈새 시간을 잘 활용해 수익을 만들고 싶은 분들</li>
         <li>퇴근 후 부업 찾고 있는 분들</li>
       </ul>
       <div class="hero-closing">
+        <img src="hero.gif" alt="hero gif" class="hero-gif">
         <span class="closing-line1">✦ 첫 수익 만드는 가장 빠른 길</span>
         <span class="closing-line2">한달 <mark class="closing-mark">최소 100만원</mark> 이상 벌어가는 방법</span>
         <a class="btn" href="#apply">무료특강 신청하기 →</a>
       </div>
     </div>
     <div class="hero-meta">
-      <span>참가비 0원</span>
-      <span>실시간 라이브</span>
-      <span>신청자 한정 수익화자료 무료제공</span>
+      <span>10GB 웰컴키트 소스팩 제공</span>
+      <span>실시간 라이브 특강 2회</span>
+      <span>참여자 전용 단톡방 운영</span>
     </div>
   </div>
 </section>
