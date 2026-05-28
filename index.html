@@ -1456,7 +1456,7 @@
   .final p.lead {
     font-size: 18px;
     color: #C8C8C8;
-    margin-bottom: 16px;
+    margin-bottom: 6px;
   }
   .final .deadline {
     display: inline-block;
@@ -1465,12 +1465,12 @@
     font-weight: 800;
     padding: 8px 18px;
     border-radius: 6px;
-    margin: 12px 0 36px;
+    margin: 4px 0 56px;
     font-size: 15px;
   }
   .final .btn {
     font-size: 18px;
-    padding: 22px 56px;
+    padding: 14px 56px;
   }
   .final-note {
     margin-top: 20px;
@@ -2058,14 +2058,100 @@
 
   /* ── FOOTER ── */
   .footer {
-    background: var(--black);
+    background: #111;
     color: #888;
-    padding: 30px 24px;
-    text-align: center;
     font-size: 13px;
     border-top: 1px solid #222;
+    font-family: var(--font);
   }
-  .footer strong { color: #C8C8C8; }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer-brand { flex-shrink: 0; margin-left: 100px; }
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .footer-logo-icon {
+    width: 30px; height: 30px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 13px;
+    color: #000;
+    flex-shrink: 0;
+  }
+  .footer-logo-name {
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+  .footer-tagline {
+    font-size: 13px;
+    color: #bbb;
+    line-height: 1.7;
+  }
+  .footer-info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5px;
+    margin-left: auto;
+    margin-right: 200px;
+  }
+  .footer-info-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .fi-label {
+    color: #999;
+    font-size: 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 64px;
+  }
+  .fi-value {
+    color: #bbb;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .footer-bottom {
+    border-top: 1px solid #1e1e1e;
+    padding: 20px 24px 90px;
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+  }
+  @media (max-width: 640px) {
+    .footer-inner {
+      flex-direction: column;
+      gap: 28px;
+      padding: 36px 20px 24px;
+    }
+    .footer-brand {
+      margin-left: 0;
+    }
+    .footer-info-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5px;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
 </style>
 </head>
 <body>
@@ -2734,7 +2820,7 @@
         지금 무료로 신청하기 →
       </a>
     </div>
-    <p class="final-note">* 참가비 0원 · 14일 환불 보장 정책 안내 / 본 특강은 만 19세 이상 대상</p>
+    <p class="final-note">* 참가비 0원</p>
   </div>
 </section>
 
@@ -2775,7 +2861,44 @@
 
 <!-- ── FOOTER ── -->
 <footer class="footer">
-  © 2026 <strong>캐리퀸닷컴</strong> · 사업자등록번호 000-00-00000 · 통신판매업신고 0000-서울00-0000
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <span class="footer-logo-icon">캐</span>
+        <span class="footer-logo-name">캐리퀸닷컴</span>
+      </div>
+      <p class="footer-tagline">하루 1시간,<br>월급에서 벗어나는 방법</p>
+    </div>
+    <div class="footer-info-grid">
+      <div class="footer-info-row">
+        <span class="fi-label">상호명</span>
+        <span class="fi-value">캐리퀸닷컴 | 블룸시티</span>
+      </div>
+      <div class="footer-info-row">
+        <span class="fi-label">대표자</span>
+        <span class="fi-value">변진희</span>
+      </div>
+      <div class="footer-info-row">
+        <span class="fi-label">사업자번호</span>
+        <span class="fi-value">886-07-03128</span>
+      </div>
+      <div class="footer-info-row">
+        <span class="fi-label">연락처</span>
+        <span class="fi-value">010-5171-0081</span>
+      </div>
+      <div class="footer-info-row">
+        <span class="fi-label">이메일</span>
+        <span class="fi-value">jinpi_@naver.com</span>
+      </div>
+      <div class="footer-info-row">
+        <span class="fi-label">주소</span>
+        <span class="fi-value">서울특별시 송파구 오금로 11길 7-12</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 캐리퀸닷컴. All rights reserved.
+  </div>
 </footer>
 
 <script>
